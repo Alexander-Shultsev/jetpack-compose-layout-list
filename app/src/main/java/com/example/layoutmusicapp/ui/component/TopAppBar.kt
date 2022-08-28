@@ -1,5 +1,6 @@
 package com.example.layoutmusicapp.ui.component
 
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -7,6 +8,7 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -16,7 +18,7 @@ import com.example.layoutmusicapp.R
 @Composable
 fun MainTopAppBar() {
     TopAppBar(
-        title = { Text("Add Songs") },
+        title = { Title1("Add Songs") },
         navigationIcon = {
             IconButton(
                 onClick = { /* doSomething() */ },
@@ -37,7 +39,10 @@ fun MainTopAppBar() {
                         modifier = Modifier.size(24.dp))
                 })
         },
+        modifier = Modifier
+            .height(80.dp),
         backgroundColor = Color.White,
-        contentColor = Color.Black
+        contentColor = Color.Black,
+        elevation = 0.dp
     )
 }
