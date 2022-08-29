@@ -28,30 +28,32 @@ fun TabWidget(
 ) {
     var selectedTabIndex by remember { mutableStateOf(selectedTabIndexValue) }
 
-    TabRow(
-        modifier = Modifier.padding(horizontal = 24.dp),
-        selectedTabIndex = selectedTabIndex,
-        backgroundColor = Color.White,
-        indicator = {
-            Box(
-                Modifier
-                    .tabIndicatorOffset(it[selectedTabIndex])
-                    .height(4.dp)
-                    .background(Orange100)
-            )
-        }
-    ) {
-        items.forEachIndexed { index, title ->
-            Tab(
-                selected = selectedTabIndex == index,
-                onClick = {
-                    selectedTabIndex = index
-                    addSongsViewModel.changeSelectedTab(selectedTabIndex)
-                },
-                text = { Subtitle1(title) },
-                selectedContentColor = Orange100,
-                unselectedContentColor = Gray100
-            )
+    Box(modifier = Modifier.background(Color.White)) {
+        TabRow(
+            modifier = Modifier.padding(horizontal = 24.dp),
+            selectedTabIndex = selectedTabIndex,
+            backgroundColor = Color.White,
+            indicator = {
+                Box(
+                    Modifier
+                        .tabIndicatorOffset(it[selectedTabIndex])
+                        .height(4.dp)
+                        .background(Orange100)
+                )
+            }
+        ) {
+            items.forEachIndexed { index, title ->
+                Tab(
+                    selected = selectedTabIndex == index,
+                    onClick = {
+                        selectedTabIndex = index
+                        addSongsViewModel.changeSelectedTab(selectedTabIndex)
+                    },
+                    text = { Subtitle1(title) },
+                    selectedContentColor = Orange100,
+                    unselectedContentColor = Gray100
+                )
+            }
         }
     }
 }
