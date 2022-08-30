@@ -26,7 +26,7 @@ fun MainTopAppBar() {
                     Icon(
                         painterResource(id = R.drawable.ic_back),
                         contentDescription = null,
-                        modifier = Modifier.size(24.dp))
+                        modifier = Modifier.size(22.dp))
                 })
         },
         actions = {
@@ -36,11 +36,11 @@ fun MainTopAppBar() {
                     Icon(
                         painterResource(id = R.drawable.ic_search),
                         contentDescription = null,
-                        modifier = Modifier.size(24.dp))
+                        modifier = Modifier.size(22.dp))
                 })
         },
         modifier = Modifier
-            .height(80.dp),
+            .height(60.dp),
         backgroundColor = Color.White,
         contentColor = Color.Black,
         elevation = 0.dp

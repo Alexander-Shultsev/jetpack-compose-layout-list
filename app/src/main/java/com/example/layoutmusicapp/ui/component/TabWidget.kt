@@ -28,9 +28,9 @@ fun TabWidget(
 ) {
     var selectedTabIndex by remember { mutableStateOf(selectedTabIndexValue) }
 
-    Box(modifier = Modifier.background(Color.White)) {
+    Box(modifier = Modifier
+        .background(Color.White)) {
         TabRow(
-            modifier = Modifier.padding(horizontal = 24.dp),
             selectedTabIndex = selectedTabIndex,
             backgroundColor = Color.White,
             indicator = {

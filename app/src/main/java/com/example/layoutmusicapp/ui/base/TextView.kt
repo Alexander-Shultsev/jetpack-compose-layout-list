@@ -15,7 +15,7 @@ fun Subtitle1(title: String, modifier: Modifier = Modifier) =
     Text(
         text = title,
         style = TextStyle(
-            fontSize = 18.sp,
+            fontSize = 15.sp,
             fontFamily = urbanist,
             fontWeight = FontWeight.SemiBold,
             letterSpacing = .2.sp
@@ -34,12 +34,12 @@ fun Subtitle2(title: String, modifier: Modifier = Modifier) =
         ),
         modifier = modifier)
 
-@Composable
+@Composable // toolbar
 fun Title1(title: String, modifier: Modifier = Modifier) =
     Text(
         text = title,
         style = TextStyle(
-            fontSize = 24.sp,
+            fontSize = 20.sp,
             fontFamily = urbanist,
             fontWeight = FontWeight.Bold,
         ),
