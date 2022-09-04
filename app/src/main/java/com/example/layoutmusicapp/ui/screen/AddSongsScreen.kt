@@ -7,13 +7,13 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.layoutmusicapp.ui.component.BottomNavigation
 import com.example.layoutmusicapp.ui.component.MainTopAppBar
 import com.example.layoutmusicapp.ui.component.SongsList
 import com.example.layoutmusicapp.ui.component.TabWidget
@@ -55,6 +55,6 @@ fun AddSongsScreen(addSongsViewModel: AddSongsViewModel = viewModel()) {
 @Composable
 fun DefaultPreview() {
     LayoutMusicAppTheme {
-        AddSongsScreen()
+        BottomNavigation()
     }
 }
