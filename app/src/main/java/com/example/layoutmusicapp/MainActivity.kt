@@ -1,19 +1,31 @@
 package com.example.layoutmusicapp
 
 import android.os.Bundle
+import android.view.View
+import android.view.ViewTreeObserver
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import androidx.core.splashscreen.SplashScreen
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.layoutmusicapp.ui.component.BottomNavigation
 import com.example.layoutmusicapp.ui.screen.MainScreen
 import com.example.layoutmusicapp.ui.theme.LayoutMusicAppTheme
 
 class MainActivity : ComponentActivity() {
+
+    private var contentHasLoaded = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
+
+
+        setupSplashScreen(splashScreen)
+
         setContent {
             LayoutMusicAppTheme {
 
@@ -31,5 +43,19 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    private fun setupSplashScreen(splashScreen: SplashScreen) {
+        val content: View = findViewById(android.R.id.content)
+        content.viewTreeObserver.addOnPreDrawListener (
+            object : ViewTreeObserver.OnPreDrawListener {
+                override fun onPreDraw() : Boolean {
+                    return if (contentHasLoaded) {
+                        content.viewTreeObserver.removeOnPreDrawListener(this)
+                        true
+                    } else false
+                }
+            }
+        )
     }
 }
