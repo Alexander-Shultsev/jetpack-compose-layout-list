@@ -1,4 +1,4 @@
-package com.example.layoutmusicapp.ui.component
+package com.example.layoutmusicapp.ui.navigation
 
 import android.graphics.drawable.Icon
 import androidx.compose.foundation.clickable
@@ -22,8 +22,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.layoutmusicapp.R
+import com.example.layoutmusicapp.ui.component.BottomNav
 import com.example.layoutmusicapp.ui.screen.AddSongsScreen
 import com.example.layoutmusicapp.ui.screen.AlertDialogScreen
+import com.example.layoutmusicapp.ui.screen.MediaRecorderScreen
 import kotlinx.coroutines.launch
 
 @Composable
@@ -36,7 +38,8 @@ fun NavigationDrawer() {
     val navigationItem = listOf(
         NavigationItem.First,
         NavigationItem.Second,
-        NavigationItem.Third
+        NavigationItem.Third,
+        NavigationItem.MediaRecorder
     )
 
     ModalDrawer(
@@ -102,6 +105,11 @@ sealed class NavigationItem(
         title = "Third",
         icon = R.drawable.ic_launcher_background
     )
+    object MediaRecorder: NavigationItem(
+        id = "MediaRecorder",
+        title = "Диктофон",
+        icon = R.drawable.ic_launcher_background
+    )
 }
 
 @Composable
@@ -119,7 +127,10 @@ fun NavHost(
             AlertDialogScreen()
         }
         composable(route = NavigationItem.Third.id) {
-            BottomNavigation()
+            BottomNav()
+        }
+        composable(route = NavigationItem.MediaRecorder.id) {
+            MediaRecorderScreen()
         }
     }
 }

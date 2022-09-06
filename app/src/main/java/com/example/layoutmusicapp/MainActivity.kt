@@ -1,5 +1,8 @@
 package com.example.layoutmusicapp
 
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
@@ -11,9 +14,14 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.example.layoutmusicapp.ui.component.BottomNavigation
 import com.example.layoutmusicapp.ui.screen.MainScreen
 import com.example.layoutmusicapp.ui.theme.LayoutMusicAppTheme
+
+
+@SuppressLint("StaticFieldLeak")
+lateinit var activity: Activity
+@SuppressLint("StaticFieldLeak")
+lateinit var context: Context
 
 class MainActivity : ComponentActivity() {
 
@@ -23,8 +31,11 @@ class MainActivity : ComponentActivity() {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
 
+        activity = this
+        context = applicationContext
 
-        setupSplashScreen(splashScreen)
+        // Setting splash screen
+//        setupSplashScreen(splashScreen)
 
         setContent {
             LayoutMusicAppTheme {
@@ -36,26 +47,24 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-//                    AddSongsScreen()
-//                    AlertDialogScreen()
-//                    BottomNavigation()
                     MainScreen()
                 }
             }
         }
     }
 
-    private fun setupSplashScreen(splashScreen: SplashScreen) {
-        val content: View = findViewById(android.R.id.content)
-        content.viewTreeObserver.addOnPreDrawListener (
-            object : ViewTreeObserver.OnPreDrawListener {
-                override fun onPreDraw() : Boolean {
-                    return if (contentHasLoaded) {
-                        content.viewTreeObserver.removeOnPreDrawListener(this)
-                        true
-                    } else false
-                }
-            }
-        )
-    }
+// Setting splash screen
+//    private fun setupSplashScreen(splashScreen: SplashScreen) {
+//        val content: View = findViewById(android.R.id.content)
+//        content.viewTreeObserver.addOnPreDrawListener (
+//            object : ViewTreeObserver.OnPreDrawListener {
+//                override fun onPreDraw() : Boolean {
+//                    return if (contentHasLoaded) {
+//                        content.viewTreeObserver.removeOnPreDrawListener(this)
+//                        true
+//                    } else false
+//                }
+//            }
+//        )
+//    }
 }

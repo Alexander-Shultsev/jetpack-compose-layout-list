@@ -28,7 +28,7 @@ private lateinit var navController: NavController
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun BottomNavigation() {
+fun BottomNav() {
     navController = rememberNavController()
 
     val listItems = listOf (
@@ -120,13 +120,5 @@ fun BottomNavigationMain(items: List<NavItems>, navController: NavController) {
                 alwaysShowLabel = true
             )
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun BottomNavigationScreenPreview() {
-    LayoutMusicAppTheme {
-        BottomNavigation()
     }
 }
