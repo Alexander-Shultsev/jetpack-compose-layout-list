@@ -63,6 +63,7 @@ fun NavigationDrawer() {
                                 }
                                 restoreState = true
                             }
+                            scope.launch { drawerState.close() }
                         }
                         .fillMaxWidth()
                         .height(50.dp),
