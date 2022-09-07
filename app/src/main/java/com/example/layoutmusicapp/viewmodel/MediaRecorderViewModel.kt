@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Application
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.pm.PackageManager
 import android.media.MediaRecorder
 import android.media.MediaRecorder.OutputFormat.MPEG_2_TS
@@ -14,6 +15,8 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.mutableStateOf
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -24,6 +27,8 @@ import androidx.lifecycle.ViewModel
 import com.example.layoutmusicapp.activity
 import com.example.layoutmusicapp.context
 import java.io.File
+import java.security.Permission
+
 
 class MediaRecorderViewModel: ViewModel() {
 
@@ -43,29 +48,40 @@ class MediaRecorderViewModel: ViewModel() {
 
     private var mediaRecorder: MediaRecorder? = null
     private lateinit var permission: Array<String>
-    private var outputFile: String
+    private lateinit var outputFile: String
     private var isStared: Boolean = false
     private var isPaused: Boolean = false
 
     init {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO)
-            != PackageManager.PERMISSION_GRANTED
+            == PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)
+            == PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            == PackageManager.PERMISSION_GRANTED
         ) {
-            permission = arrayOf(Manifest.permission.RECORD_AUDIO)
+            runInitialization()
+        } else {
+            permission = arrayOf(
+                Manifest.permission.RECORD_AUDIO,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
             ActivityCompat.requestPermissions(activity, permission, 0)
         }
+    }
 
-
-        outputFile = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+    private fun runInitialization() {
+        outputFile = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
             .absolutePath + "/record.mp3"
 
-        mediaRecorder = MediaRecorder()
-        mediaRecorder?.setAudioSource(MediaRecorder.AudioSource.MIC)
-        mediaRecorder?.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
-        mediaRecorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
-        mediaRecorder?.setOutputFile(outputFile)
-        mediaRecorder?.prepare()
-
+        mediaRecorder = MediaRecorder().apply {
+            setAudioSource(MediaRecorder.AudioSource.MIC)
+            setOutputFormat(MediaRecorder.OutputFormat.MPEG_2_TS)
+            setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+            setOutputFile(outputFile)
+            prepare()
+        }
     }
 
     fun changeRecorderStatus() {
@@ -73,16 +89,22 @@ class MediaRecorderViewModel: ViewModel() {
         Log.i(TAG, "isPaused: $isPaused")
 
         if (isStared) {
-            if (isPaused) { resume() }
+            if (isPaused) {
+                resume()
+            }
             else {
                 pause()
             }
         } else {
-            mediaRecorder?.start()
-            isStared = true
-            setRecorderStatus("Запись идет")
-            setButtonStartText("Пауза")
+            start()
         }
+    }
+
+    fun start() {
+        mediaRecorder?.start()
+        isStared = true
+        setRecorderStatus("Запись идет")
+        setButtonStartText("Пауза")
     }
 
     @SuppressLint("NewApi")
@@ -108,7 +130,4 @@ class MediaRecorderViewModel: ViewModel() {
         setRecorderStatus("Диктофон")
         setButtonStartText("Старт")
     }
-
-
-
 }

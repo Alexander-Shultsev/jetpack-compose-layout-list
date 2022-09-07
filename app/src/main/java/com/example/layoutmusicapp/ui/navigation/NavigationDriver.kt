@@ -119,7 +119,7 @@ fun NavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = NavigationItem.First.id
+        startDestination = NavigationItem.MediaRecorder.id
     ) {
         composable(route = NavigationItem.First.id) {
             AddSongsScreen()
