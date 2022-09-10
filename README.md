@@ -1,6 +1,5 @@
-# jetpack-compose-layout-list
+# Изучение android разработки
 
-Вёрстка простого экрнана на Jetpack Compose
 Элементы:
   1) TopAppBar
   2) Tabs
