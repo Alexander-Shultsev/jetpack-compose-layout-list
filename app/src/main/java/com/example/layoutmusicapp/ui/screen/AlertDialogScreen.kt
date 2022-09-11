@@ -41,7 +41,6 @@ fun AlertDialogScreen(alertDialogViewModel: AlertDialogViewModel = viewModel()) 
                     }
                 )
             }
-
         }
         LazyColumn {
             item {

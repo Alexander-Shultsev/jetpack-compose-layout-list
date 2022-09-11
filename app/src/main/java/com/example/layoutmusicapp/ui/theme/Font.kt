@@ -10,3 +10,13 @@ val urbanist = FontFamily(
     Font(R.font.urbanist_medium, FontWeight.Medium),
     Font(R.font.urbanist_semibold, FontWeight.SemiBold)
 )
+
+val IBMPlexSans = FontFamily(
+    Font(R.font.ibm_plex_sans_regular, FontWeight.Normal),
+    Font(R.font.ibm_plex_sans_medium, FontWeight.Medium),
+)
+
+val roboto = FontFamily(
+    Font(R.font.roboto_regular, FontWeight.Normal),
+    Font(R.font.roboto_bold, FontWeight.Bold),
+)

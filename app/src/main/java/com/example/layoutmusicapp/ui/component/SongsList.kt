@@ -24,13 +24,13 @@ import com.example.layoutmusicapp.ui.theme.Orange100
 
 @Composable
 fun SongsList() {
-    Column(modifier = Modifier
-        .padding(horizontal = 18.dp)
-        .padding(top = 10.dp)
+    Column(
+        modifier = Modifier
+            .padding(horizontal = 18.dp)
+            .padding(top = 10.dp)
     ) {
-        SongsListItem(0)
-        for (item in 1..2) {
-             SongsListItem(item)
+        for (item in 0..10) {
+            SongsListItem(item)
         }
     }
 }
@@ -55,14 +55,8 @@ fun SongsListItem(number: Int) {
             modifier = Modifier
                 .clip(shape = RoundedCornerShape(15.dp))
                 .size(60.dp),
-            contentScale = ContentScale.Crop)
-
-//        Icon(
-//            painter = painterResource(id = R.drawable.ic_launcher_background),
-//            modifier = Modifier
-//                .clip(shape = RoundedCornerShape(15.dp))
-//                .size(60.dp),
-//            contentDescription = null)
+            contentScale = ContentScale.Crop
+        )
 
         Column(
             modifier = Modifier
@@ -70,9 +64,10 @@ fun SongsListItem(number: Int) {
                 .weight(1f)
         ) {
             Title2(
-                title ="Somebody’s Nobody",
+                title = "Somebody’s Nobody",
                 modifier = Modifier
-                    .padding(bottom = 7.dp))
+                    .padding(bottom = 7.dp)
+            )
 
             Subtitle2("Alexander 23")
         }
@@ -83,8 +78,10 @@ fun SongsListItem(number: Int) {
                     .size(24.dp),
                 tint = Orange100,
                 painter = painterResource(
-                    id = if (addSongsStatus) R.drawable.ic_added else R.drawable.ic_add),
-                contentDescription = null)
+                    id = if (addSongsStatus) R.drawable.ic_added else R.drawable.ic_add
+                ),
+                contentDescription = null
+            )
         }
     }
 }

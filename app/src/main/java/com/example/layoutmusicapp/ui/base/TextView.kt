@@ -8,6 +8,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.layoutmusicapp.ui.theme.Gray200
+import com.example.layoutmusicapp.ui.theme.IBMPlexSans
+import com.example.layoutmusicapp.ui.theme.roboto
 import com.example.layoutmusicapp.ui.theme.urbanist
 
 @Composable
@@ -55,3 +57,27 @@ fun Title2(title: String, modifier: Modifier = Modifier) =
             fontWeight = FontWeight.Bold,
         ),
         modifier = modifier)
+
+@Composable
+fun EasyPayTitle1(title: String, modifier: Modifier = Modifier) {
+    Text(
+        text = title,
+        style = TextStyle(
+            fontSize = 28.sp,
+            fontFamily = IBMPlexSans,
+            fontWeight = FontWeight.Medium,
+        ),
+        modifier = modifier)
+}
+
+@Composable
+fun EasyPaySubtitle1(title: String, modifier: Modifier = Modifier) {
+    Text(
+        text = title,
+        style = TextStyle(
+            fontSize = 20.sp,
+            fontFamily = roboto,
+            fontWeight = FontWeight.Normal,
+        ),
+        modifier = modifier)
+}
