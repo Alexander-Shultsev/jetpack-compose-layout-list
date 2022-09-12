@@ -23,9 +23,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.layoutmusicapp.R
 import com.example.layoutmusicapp.ui.component.BottomNav
-import com.example.layoutmusicapp.ui.screen.AddSongsScreen
-import com.example.layoutmusicapp.ui.screen.AlertDialogScreen
-import com.example.layoutmusicapp.ui.screen.MediaRecorderScreen
+import com.example.layoutmusicapp.ui.screen.*
 import kotlinx.coroutines.launch
 
 @Composable
@@ -39,7 +37,9 @@ fun NavigationDrawer() {
         NavigationItem.First,
         NavigationItem.Second,
         NavigationItem.Third,
-        NavigationItem.MediaRecorder
+        NavigationItem.MediaRecorder,
+        NavigationItem.Location,
+        NavigationItem.Oath,
     )
 
     ModalDrawer(
@@ -111,6 +111,16 @@ sealed class NavigationItem(
         title = "Диктофон",
         icon = R.drawable.ic_launcher_background
     )
+    object Location: NavigationItem(
+        id = "Location",
+        title = "Текущее местоположение",
+        icon = R.drawable.ic_launcher_background
+    )
+    object Oath: NavigationItem(
+        id = "Oath",
+        title = "Oath авторизация",
+        icon = R.drawable.ic_launcher_background
+    )
 }
 
 @Composable
@@ -119,7 +129,7 @@ fun NavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = NavigationItem.MediaRecorder.id
+        startDestination = NavigationItem.Location.id
     ) {
         composable(route = NavigationItem.First.id) {
             AddSongsScreen()
@@ -132,6 +142,12 @@ fun NavHost(
         }
         composable(route = NavigationItem.MediaRecorder.id) {
             MediaRecorderScreen()
+        }
+        composable(route = NavigationItem.Location.id) {
+            LocationScreen()
+        }
+        composable(route = NavigationItem.Oath.id) {
+            OathAuthorizationScreen()
         }
     }
 }

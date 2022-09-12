@@ -17,6 +17,10 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        manifestPlaceholders = [
+            appAuthRedirectScheme: "ru.kts.oauth"
+        ]
     }
 
     buildTypes {
@@ -67,5 +71,12 @@ dependencies {
 
     // SplashScreen
     implementation 'androidx.core:core-splashscreen:1.0.0'
+
+    // FusedLocationProviderClient
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
+
+    // AppOath
+    implementation 'net.openid:appauth:0.11.1'
+
 
 }
