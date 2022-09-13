@@ -13,3 +13,4 @@ val Gray200 = Color(0xFF616161)
 val Orange100 = Color(0xFFff8216)
 
 val EasyPayGray100 = Color(0xFFD0D3D8)
+val EasyPayGray400 = Color(0xFF595F67)

@@ -40,6 +40,7 @@ fun NavigationDrawer() {
         NavigationItem.MediaRecorder,
         NavigationItem.Location,
         NavigationItem.Oath,
+        NavigationItem.EasyPayScreen,
     )
 
     ModalDrawer(
@@ -79,7 +80,6 @@ fun NavigationDrawer() {
         },
         content = {
             Column {
-                Text(text = "Свайпни вправо, чтобы увидеть боковое меню")
                 NavHost(navController = navController)
             }
         }
@@ -121,6 +121,11 @@ sealed class NavigationItem(
         title = "Oath авторизация",
         icon = R.drawable.ic_launcher_background
     )
+    object EasyPayScreen: NavigationItem(
+        id = "EasyPayScreen",
+        title = "Вёрстка Easy Pay",
+        icon = R.drawable.ic_launcher_background
+    )
 }
 
 @Composable
@@ -148,6 +153,9 @@ fun NavHost(
         }
         composable(route = NavigationItem.Oath.id) {
             OathAuthorizationScreen()
+        }
+        composable(route = NavigationItem.EasyPayScreen.id) {
+            EasyPayAppScreen()
         }
     }
 }

@@ -4,13 +4,12 @@ import android.icu.text.CaseMap
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import com.example.layoutmusicapp.ui.theme.Gray200
-import com.example.layoutmusicapp.ui.theme.IBMPlexSans
-import com.example.layoutmusicapp.ui.theme.roboto
-import com.example.layoutmusicapp.ui.theme.urbanist
+import com.example.layoutmusicapp.ui.theme.*
 
 @Composable
 fun Subtitle1(title: String, modifier: Modifier = Modifier) =
@@ -63,7 +62,7 @@ fun EasyPayTitle1(title: String, modifier: Modifier = Modifier) {
     Text(
         text = title,
         style = TextStyle(
-            fontSize = 28.sp,
+            fontSize = 32.sp,
             fontFamily = IBMPlexSans,
             fontWeight = FontWeight.Medium,
         ),
@@ -75,9 +74,24 @@ fun EasyPaySubtitle1(title: String, modifier: Modifier = Modifier) {
     Text(
         text = title,
         style = TextStyle(
-            fontSize = 20.sp,
+            fontSize = 18.sp,
             fontFamily = roboto,
             fontWeight = FontWeight.Normal,
+            color = EasyPayGray400
+        ),
+        textAlign = TextAlign.Center,
+        modifier = modifier)
+}
+
+@Composable
+fun EasyPayTitleButton(title: String, modifier: Modifier = Modifier, color: Color) {
+    Text(
+        text = title,
+        style = TextStyle(
+            fontSize = 20.sp,
+            fontFamily = roboto,
+            fontWeight = FontWeight.Bold,
+            color = color
         ),
         modifier = modifier)
 }
