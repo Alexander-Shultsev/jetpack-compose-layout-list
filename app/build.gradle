@@ -77,6 +77,4 @@ dependencies {
 
     // AppOath
     implementation 'net.openid:appauth:0.11.1'
-
-
 }

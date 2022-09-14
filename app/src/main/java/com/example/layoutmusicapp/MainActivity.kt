@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
@@ -27,6 +28,8 @@ import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.layoutmusicapp.ui.screen.MainScreen
 import com.example.layoutmusicapp.ui.theme.LayoutMusicAppTheme
+import org.jetbrains.hub.oauth2.client.jersey.oauth2Client
+import java.net.URI
 import java.security.Permission
 
 
@@ -65,67 +68,19 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-//    object AuthConfig {
-//        const val AUTH_URI = "https://github.com/login/oauth/authorize"
-//        const val TOKEN_URI = "https://github.com/login/oauth/access_token"
-//        const val END_SESSION_URL = "https://github.com/logout"
-//        const val RESPONSE_TYPE = ResponseTypeValues.CODE
-//        const val CLIENT_ID = "..."
-//        const val SCOPE = "user,repo"
-//        const val CLIENT_SECRET = "..."
-//        const val CALLBACK_URL = "ru.kts.oauth://github.com/callback"
-//        const val LOGOUT_CALLBACK_URL = "ru.kts.oauth://github.com/logout_callback"
-//    }
-//
-//    private val authorizationService: AuthorizationService = AuthorizationService(context)
-//
-//    private val serviceConfiguration = AuthorizationServiceConfiguration(
-//        AuthConfig.AUTH_URI.toUri(),
-//        AuthConfig.TOKEN_URI.toUri(),
-//        null,
-//        AuthConfig.CALLBACK_URL.toUri(),
-//    )
-//
-//    fun getAuthRequest() : AuthorizationRequest {
-//        val callbackUri = AuthConfig.CALLBACK_URL.toUri()
-//
-//        return AuthorizationRequest.Builder(
-//            serviceConfiguration,
-//            AuthConfig.CLIENT_ID,
-//            AuthConfig.RESPONSE_TYPE,
-//            callbackUri
-//        ).setScope(AuthConfig.SCOPE).build()
-//    }
-//
-//    fun createIntent() {
-//        val customTabsIntent = CustomTabsIntent.Builder().build()
-//
-//        val openValuePageIntent = authorizationService.getAuthorizationRequestIntent(
-//            getAuthRequest(),
-//            customTabsIntent
-//        )
-//
-//        val getAuthResponse = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-//            val dataIntent = it.data ?: return@registerForActivityResult
-////            handleA(dataIntent)
-//        }
-//
-//        getAuthResponse.launch(openValuePageIntent)
-//    }
-//
-//    fun onClear() {
-//        authorizationService.dispose()
-//    }
-//
-//    private fun handleAuthResponseIntent(intent: Intent?) {
-//        val exception = AuthorizationException.fromIntent(intent)
-//
-////        val tokenExchangeRequest = AuthorizationResponse.fromIntent(intent)
-////            ?.createTokenExchangeRequest()
-////        when {
-////            exception != null ->
-////        }
-//    }
+    // https://www.youtube.com/watch?v=PFZ3cwxn9Wk
+
+    private object AppConfig {
+        const val AUTH_URI = "https://github.com/login/oauth/access_token"
+        const val TOKEN_URI = "https://github.com/login/oauth/access_token"
+        const val CLIENT_ID = ""
+        const val _ID = ""
+        const val TYPE = ""
+        const val SOURCE = "user,repo"
+
+        const val REDIRECT_URI = ""
+        const val REDIRECT_URI2 = ""
+    }
 
 // Setting splash screen
 //    private fun setupSplashScreen(splashScreen: SplashScreen) {

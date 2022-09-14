@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 
-class EasyPayViewModel : ViewModel() {
+class EasyPayStartViewModel : ViewModel() {
 
     data class InfoOnLoginScreenClass (
         val position: Int,

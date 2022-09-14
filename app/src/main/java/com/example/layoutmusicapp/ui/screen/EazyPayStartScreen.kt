@@ -19,12 +19,12 @@ import com.example.layoutmusicapp.ui.base.ButtonMain
 import com.example.layoutmusicapp.ui.component.EasyPaySubtitle1
 import com.example.layoutmusicapp.ui.component.EasyPayTitle1
 import com.example.layoutmusicapp.ui.component.Indicator
-import com.example.layoutmusicapp.viewmodel.EasyPayViewModel
+import com.example.layoutmusicapp.viewmodel.EasyPayStartViewModel
 
 // https://www.figma.com/file/5xGpvwli4ZFkna4PEc0Wnk/EasyPay%3A-E-Wallet-Digital-Payment-App-(Community)?node-id=1%3A41
 
 @Composable
-fun EasyPayAppScreen(easyPayViewModel: EasyPayViewModel = viewModel()) {
+fun EasyPayAppScreen(easyPayViewModel: EasyPayStartViewModel = viewModel()) {
     val loginCurrentIndicator = easyPayViewModel.loginCurrentIndicator.observeAsState(0)
 
     Column {
