@@ -19,7 +19,7 @@ android {
         }
 
         manifestPlaceholders = [
-            appAuthRedirectScheme: "ru.kts.oauth"
+            AppAuthRedirectSheme: "ru.kts.oauth"
         ]
     }
 
@@ -77,4 +77,11 @@ dependencies {
 
     // AppOath
     implementation 'net.openid:appauth:0.11.1'
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+
+    // ViewModel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
 }
